@@ -1,0 +1,23 @@
+{
+  "name": "WDIO-my-Boilerplate",
+  "version": "1.0.0",
+  "description": "WDIO my Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gr1zzlyBear/WDIO-my-Boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gr1zzlyBear/WDIO-my-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/Gr1zzlyBear/WDIO-my-Boilerplate#readme",
+  "devDependencies": {
+    "@wdio/cli": "^6.12.1"
+  }
+}

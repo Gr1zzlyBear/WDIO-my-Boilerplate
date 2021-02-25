@@ -25,24 +25,6 @@ Feature: Google Homepage
 #       | Refining | I'm Feeling Lucky |
 
 
-
-
-# GIVEN a user has accessed the Google homepage via google.co.uk
-# THEN the user is taken to the Google homepage
-
-
-# GIVEN a user has accessed the Google homepage via google.co.uk
-# THEN the user is displayed the google homepage
-# Then I can see the Google logo
-# AND the user can see a search bar in the middle of the screen
-# AND the user can see 2 buttons labelled 'Google Search' and 'I'm Feeling Lucky'
-
-
-
-
-
-
-
 # GIVEN a user has accessed the Google homepage
 # WHERE the user has not signed in
 # THEN the user is shown a 'Sign in' button on the top right corner

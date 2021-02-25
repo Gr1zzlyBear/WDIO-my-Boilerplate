@@ -5,5 +5,8 @@ class HomePage extends Page {
   open() {
     super.open(`${Url}`);
   }
+  test() {
+    console.log("hello");
+  }
 }
 export default new HomePage();

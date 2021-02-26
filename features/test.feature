@@ -4,16 +4,17 @@ Feature: Google Homepage
 
   Background:
     Given the user has accessed the Google homepage
-    And I accept cookies 
+    
 
   Scenario: Verifiying page url
+  When I accept cookies 
    Then the user is taken to the Google homepage
 
-#   Scenario: Verifiying Google logo
-#     Then the user can see the Google logo
+Scenario: Verifiying Google logo
+Then the user can see the Google logo
 
-#   Scenario: Verifiying the 'search bar'
-#     Then the user can see the Search bar
+Scenario: Verifiying the 'search bar'
+Then the user can see the Search bar
 
 #   Scenario Outline: Verify homepage button text
 #     Then the "<option>" button is present
@@ -23,24 +24,6 @@ Feature: Google Homepage
 #       | option   | text              |
 #       | Search   | Google Search     |
 #       | Refining | I'm Feeling Lucky |
-
-
-
-
-# GIVEN a user has accessed the Google homepage via google.co.uk
-# THEN the user is taken to the Google homepage
-
-
-# GIVEN a user has accessed the Google homepage via google.co.uk
-# THEN the user is displayed the google homepage
-# Then I can see the Google logo
-# AND the user can see a search bar in the middle of the screen
-# AND the user can see 2 buttons labelled 'Google Search' and 'I'm Feeling Lucky'
-
-
-
-
-
 
 
 # GIVEN a user has accessed the Google homepage

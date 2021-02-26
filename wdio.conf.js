@@ -1,3 +1,6 @@
+const { generate } = require("multiple-cucumber-html-reporter");
+const reportDate = require("./features/helpers/reportDate.helper.js");
+const { removeSync, ensureDir } = require("fs-extra");
 exports.config = {
     //
     // ====================
@@ -66,7 +69,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -128,7 +131,7 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec','dot'],
+    reporters: ['spec','dot', "cucumberjs-json"],
 
 
     //
@@ -181,6 +184,12 @@ exports.config = {
      */
     // onPrepare: function (config, capabilities) {
     // },
+    onPrepare: () => {
+      // Remove the `.tmp/` folder that holds the json and report files
+      removeSync(".tmp/");
+      removeSync("./reports/screenshots");
+      ensureDir("./reports/screenshots");
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -210,6 +219,13 @@ exports.config = {
      */
     // before: function (capabilities, specs) {
     // },
+    before: function () {
+      const chai = require("chai");
+      global.expect = chai.expect;
+      global.assert = chai.assert;
+      global.should = chai.should();
+    },
+  
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -237,6 +253,17 @@ exports.config = {
      */
     // afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries }) {
     // },
+    afterStep: function (
+      { uri, feature, step },
+      context,
+      { error, result, duration, passed, retries }
+    ) {
+      if (passed === false) {
+        browser.saveScreenshot(
+          `reports/screenshots/${step.feature.name}_${step.scenario.name}.png`
+        );
+      }
+    },
     /**
      * Runs after a Cucumber scenario
      */
@@ -284,6 +311,12 @@ exports.config = {
      */
     // onComplete: function(exitCode, config, capabilities, results) {
     // },
+    onComplete: () => {
+      generate({
+        jsonDir: ".tmp/json/",
+        reportPath: `./reports/cucumber-reports/${reportDate.reportDate()}/report/`,
+      });
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {String} oldSessionId session ID of the old session

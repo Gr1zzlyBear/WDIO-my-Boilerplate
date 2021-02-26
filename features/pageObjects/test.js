@@ -1,5 +1,5 @@
 import homePage from "./homePage";
 
 
-require { HomePage } from "../pageObjects/homePage.js";
+require; { HomePage } from "homePage";
 HomePage.test()

@@ -8,5 +8,11 @@ class HomePage extends Page {
   test() {
     console.log("hello");
   }
+  get Searchbar() {
+    return $('[title="Search"]');
+  }
+  get Logo() {
+    return $('[title="Lantern Festival 2021"]');
+  }
 }
 export default new HomePage();

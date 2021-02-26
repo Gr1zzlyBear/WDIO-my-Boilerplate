@@ -4,16 +4,17 @@ Feature: Google Homepage
 
   Background:
     Given the user has accessed the Google homepage
-    And I accept cookies 
+    
 
   Scenario: Verifiying page url
+  When I accept cookies 
    Then the user is taken to the Google homepage
 
-#   Scenario: Verifiying Google logo
-#     Then the user can see the Google logo
+Scenario: Verifiying Google logo
+Then the user can see the Google logo
 
-#   Scenario: Verifiying the 'search bar'
-#     Then the user can see the Search bar
+Scenario: Verifiying the 'search bar'
+Then the user can see the Search bar
 
 #   Scenario Outline: Verify homepage button text
 #     Then the "<option>" button is present
